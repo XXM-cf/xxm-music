@@ -18,4 +18,21 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+#项目搭建过程
+## 初始化项目
+```bash
+git init #初始化本地仓库
+git add . #提交本地代码到暂存区
+git commit -m '描述信息' #commit
+
+#在github上建立远程仓库
+git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git  #建立连接
+git push -u origin master 推送代码到远程仓库
+```
+## 使用vue-cli
+```bash
+cnpm install
+cnpm install jquery --save
+cnpm install vuex --save
+cnpm install less less-loader --save
+cnpm install axios --save
