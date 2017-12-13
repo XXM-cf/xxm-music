@@ -5,15 +5,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLogged: false, // 是否登陆状态
+    isLoading: false,
     userMsg: {} // 登陆成功后的用户信息
   },
   mutations: {
-    GET_INFO(state,msg){
+    GET_INFO(state, msg) {
       state.isLogged = true
       state.userMsg = msg
     },
-    SINGNOUT(state){ // 退出登陆
-      state.isLogged = false
+    UPDATE_LOADING(state, flag) {
+      state.isLoading = flag
     }
   }
 })

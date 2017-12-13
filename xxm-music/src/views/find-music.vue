@@ -1,34 +1,30 @@
 <template>
-  <div class="page">
-    <Carousel autoplay>
-      <Carousel-item>
-        <div class="demo-carousel">1</div>
-      </Carousel-item>
-      <Carousel-item>
-        <div class="demo-carousel">2</div>
-      </Carousel-item>
-      <Carousel-item>
-        <div class="demo-carousel">3</div>
-      </Carousel-item>
-      <Carousel-item>
-        <div class="demo-carousel">4</div>
-      </Carousel-item>
-    </Carousel>
+  <div class="page" v-loading="$store.state.isLoading">
   </div>
 </template>
 <script>
 import typeList from '../components/type-list.vue'
+import { UserPlaylist } from '@/api/api.js'
 export default {
   data() {
     return {
-      key1: '1',
-      key2: '2',
-      key3: '3'
     }
   },
   name: 'Index',
   components: {
     typeList
+  },
+  created() {
+    var params = {
+      uid: this.$uid
+    }
+      UserPlaylist(params)
+        .then(res => {
+              console.log(res)
+          // this.table.data = res.data
+        })
+  },
+  methods: {
   }
 }
 
@@ -37,11 +33,6 @@ export default {
 .page {
   position: relative;
   height: 100%;
-  .demo-carousel{
-    height: 0.6rem;
-    background: #333;
-    color: #fff;
-  }
 }
 
 </style>

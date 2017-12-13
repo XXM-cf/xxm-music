@@ -38,5 +38,4 @@ cnpm install jquery --save
 cnpm install vuex --save
 cnpm install less less-loader --save
 cnpm install axios --save
-cnpm install iview@1.0.1 --save
 ```

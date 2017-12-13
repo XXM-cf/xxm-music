@@ -8,16 +8,18 @@ import './common/base.less'
 import './assets/css/reset.css'
 import ajax from './common/js/ajax.js'
 import store from './store/index.js'
-import iView from 'iview'
-import 'iview/dist/styles/iview.css'    // 使用 CSS
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
-Vue.use(iView)
+Vue.use(ElementUI)
+
 Vue.use(router)
 Vue.prototype.$ajax = ajax
-
+Vue.prototype.$ajax = ajax
 Vue.config.productionTip = false
-
+Vue.prototype.$uid ? JSON.parse(window.sessionStorage.getItem('userData')).account.id : ''
 /* eslint-disable no-new */
+
 new Vue({
   router,
   store,

@@ -4,6 +4,8 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
+var webpack = require("webpack")
+
 function resolve(dir) {
   return path.join(__dirname, '..', dir)
 }
@@ -41,6 +43,14 @@ module.exports = {
       'common': resolve('src/common')
     }
   },
+  // 在module.exports的最后加入-->
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin('common.js'),
+    new webpack.ProvidePlugin({
+      jQuery: "jquery",
+      $: "jquery"
+    })
+  ],
   module: {
     rules: [
       ...(config.dev.useEslint ? [createLintingRule()] : []),
@@ -93,12 +103,3 @@ module.exports = {
     child_process: 'empty'
   }
 }
-var webpack = require("webpack")
-<!--在module.exports的最后加入-->
-plugins: [
-  new webpack.optimize.CommonsChunkPlugin('common.js'),
-  new webpack.ProvidePlugin({
-    jQuery: "jquery",
-    $: "jquery"
-  })
-]

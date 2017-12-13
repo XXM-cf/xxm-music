@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <div class="back" @click="$router.push('./my-music')">
+    <div class="back" @click="$router.push('/my-music')">
       <i class="icon-back"></i>
     </div>
     <div class="logo">
@@ -21,17 +21,14 @@
 import typeList from '../components/type-list.vue'
 import { loginCellphone } from '../api/api.js'
 import $ from 'jquery'
-import store from '@/store/index'
+import Vue from 'vue'
+
 export default {
-  name: 'Index',
   data() {
     return {
       loginMsg: {
         phone: '',
         password: ''
-
-      },
-      userData: {
       }
     }
   },
@@ -46,7 +43,10 @@ export default {
     getInfo() {
       loginCellphone(this.loginMsg)
         .then(res => {
-          store.commit('GET_INFO', res)
+          window.sessionStorage.setItem('userData',JSON.stringify(res))
+          this.$store.commit('GET_INFO', res)
+          this.$router.push('/my-music')
+          Vue.prototype.$uid = res.account.id
         })
     }
   }

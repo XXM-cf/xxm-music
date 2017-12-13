@@ -1,5 +1,6 @@
 import axios from 'axios'
 import querystring from 'querystring'
+import store from '@/store/index'
 
 const base = ''
 var baseConfig = {
@@ -39,16 +40,19 @@ var baseConfig = {
 // }
 
 axios.interceptors.request.use(function(config) { // 添加请求拦截器
+  store.commit('UPDATE_LOADING', true)
   return config // 在发送请求之前做些什么
 }, function(error) { // 对请求错误做些什么
   return Promise.reject(error)
 })
 
 axios.interceptors.response.use(function(response) { // 添加响应拦截器
+  store.commit('UPDATE_LOADING', false)
   return response // 对响应数据做点什么
 }, function(error) {
   console.log(error.msg)
   // 对响应错误做点什么
+  store.commit('UPDATE_LOADING', false)
   return Promise.reject(error)
 })
 
