@@ -1,6 +1,7 @@
 <template>
   <div class="page">
     <div class="header" id="header">
+      <h2>{{$store.state.count}}</h2>
       <span><i class="music icon-menu" @click="showSliderBar"></i></span>
       <span>
       <i class="music icon-music" @click="$router.push('/my-music')"></i>
@@ -11,16 +12,12 @@
     </div>
     <div class="slider-box" ref="slider-box">
       <div class="menu-detail">
-        <!--  <div class="menu-userInfo" :style="{ backgroundImage: 'url(' + info.bg + ')',backgroundSize: 'cover' }" v-if="isLogged">
-                <img class="avatar" :src="info.avatar" width="56" height="56">
-                <div class="user-detail">
-                  <span class="name">{{info.name}}</span>
-                  <img class="isvip" src="../../assets/images/vip.png" alt="">
-                  <span class="progress">Lv.{{info.grade}}</span>
-                </div>
-                <span class="sign" @click="signClick"><i v-show="showIcon" class="icon-coin"></i>{{sign}}</span>
-              </div> -->
-        <div class="login">
+        <div class="menu-userInf" v-if="$store.state.isLogged">
+          <img class="avatar" :src="$store.state.userMsg.profile.avatarUrl">
+          <span class="name">{{$store.state.userMsg.profile.nickname}}</span>
+          <span class="level">LV.3</span>
+        </div>
+        <div class="login" v-if="!$store.state.isLogged">
           <p>登陆网易云音乐</br>
             320K高音质无线下载，手机电脑多端同步
           </p>
@@ -53,7 +50,7 @@
           <i class="icon-setting"></i>
           <span>设置</span>
         </div>
-        <div class="exit">
+        <div class="exit" @click="$store.commit('SINGNOUT')">
           <i class="icon-exit"></i>
           <span>退出</span>
         </div>
@@ -64,8 +61,8 @@
 </template>
 <script>
 import sliderList from '../components/slider-list.vue'
-import $ from 'jquery'
 import { loginCellphone } from '../api/api.js'
+import $ from 'jquery'
 export default {
   components: {
     sliderList
@@ -159,6 +156,30 @@ export default {
     background: url('http://p1.music.126.net/2zSNIqTcpHL2jIvU6hG0EA==/109951162868128395.jpg') no-repeat;
     background-size: cover;
     position: relative;
+    .menu-userInf {
+      position: absolute;
+      bottom: 0.2rem;
+      padding: 0 0.3rem;
+      .avatar {
+        width: 1.4rem;
+        height: 1.4rem;
+        display: block;
+        border-radius: 50%;
+        margin-top: 1rem;
+      }
+      .name {
+        line-height: 0.6rem;
+        font-size: 0.3rem;
+        color: #fff;
+      }
+      .level {
+        color: #fff;
+        display: inline-block;
+        border: 1px solid #fff;
+        padding: 0.02rem 0.2rem;
+        border-radius: 0.2rem;
+      }
+    }
     .login {
       position: absolute;
       bottom: 0;

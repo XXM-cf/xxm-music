@@ -18,7 +18,8 @@ npm run build
 npm run build --report
 ```
 
-#项目搭建过程
+# 项目搭建过程
+## 使用vue-cli创建项目
 ## 初始化项目
 ```bash
 git init #初始化本地仓库
@@ -29,10 +30,13 @@ git commit -m '描述信息' #commit
 git remote add origin git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git  #建立连接
 git push -u origin master 推送代码到远程仓库
 ```
-## 使用vue-cli
+
+## 安装相关的依赖
 ```bash
 cnpm install
 cnpm install jquery --save
 cnpm install vuex --save
 cnpm install less less-loader --save
 cnpm install axios --save
+cnpm install iview@1.0.1 --save
+```

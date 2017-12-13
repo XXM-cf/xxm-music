@@ -30,7 +30,7 @@ module.exports = {
     proxyTable: {
       '/login': {
         // target: 'http://192.168.16.102:3000/',
-        target: 'http://192.168.16.87:3000/', // 公司
+        target: 'http://localhost:3000/', // 公司
         changeOrigin: true,
         pathRewrite: {
           '^/login': '/login'
@@ -38,7 +38,7 @@ module.exports = {
       },
       '/user': {
         // target: 'http://192.168.16.102:3000/',
-        target: 'http://192.168.16.87:3000/', // 公司
+        target: 'http://192.168.16.214:3000/', // 公司
         changeOrigin: true,
         pathRewrite: {
           '^/user': '/user'

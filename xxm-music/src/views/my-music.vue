@@ -21,11 +21,32 @@
 </template>
 <script>
 import typeList from '../components/type-list.vue'
+import { UserPlaylist } from '../api/api.js'
+import store from '../store/index.js'
 export default {
   name: 'Index',
+  data() {
+    return {
+      uid: '',
+      isLogged: store.state.isLogged
+    }
+  },
   components: {
     typeList
-  }
+  },
+  mounted() {},
+  watch: {
+      isLogged: function() {
+        // console.log('登陆成功了')
+        let uid = $store.state.userMsg.account.id
+        UserPlaylist(uid)
+          .then(res => {
+            console.log(res)
+            // this.table.data = res.data
+          })
+      }
+  },
+  methods: {}
 }
 
 </script>
@@ -47,7 +68,7 @@ export default {
 }
 
 .song-list {
-  padding:0.2rem 0;
+  padding: 0.2rem 0;
   background: #fff;
   height: 1.5rem;
   img {
@@ -73,11 +94,11 @@ export default {
     .more {
       position: absolute;
       right: 0.4rem;
-      top:0;
+      top: 0;
       display: inline-block;
       height: 1rem;
       line-height: 1rem;
-      color:  #808080;
+      color: #808080;
       font-size: 0.3rem
     }
   }
