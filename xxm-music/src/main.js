@@ -17,7 +17,8 @@ Vue.use(router)
 Vue.prototype.$ajax = ajax
 Vue.prototype.$ajax = ajax
 Vue.config.productionTip = false
-Vue.prototype.$uid ? JSON.parse(window.sessionStorage.getItem('userData')).account.id : ''
+// Vue.prototype.$uid ? JSON.parse(window.sessionStorage.getItem('userData')).account.id : '471722851'
+
 /* eslint-disable no-new */
 
 new Vue({

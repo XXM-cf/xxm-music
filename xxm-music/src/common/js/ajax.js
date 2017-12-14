@@ -40,14 +40,14 @@ var baseConfig = {
 // }
 
 axios.interceptors.request.use(function(config) { // 添加请求拦截器
-  store.commit('UPDATE_LOADING', true)
+  store.commit('UPDATE_LOADING', true) // 请求成功之前 显示loading
   return config // 在发送请求之前做些什么
 }, function(error) { // 对请求错误做些什么
   return Promise.reject(error)
 })
 
 axios.interceptors.response.use(function(response) { // 添加响应拦截器
-  store.commit('UPDATE_LOADING', false)
+  store.commit('UPDATE_LOADING', false) // 请求完成之后 关闭loading
   return response // 对响应数据做点什么
 }, function(error) {
   console.log(error.msg)

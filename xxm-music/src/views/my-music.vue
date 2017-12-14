@@ -7,53 +7,58 @@
       <type-list iconclass="icon-diantai" name="我的电台" count="16" :isPlaying="false"></type-list>
       <type-list iconclass="icon-collect" name="我的收藏" count="16" :isPlaying="false" :isBorder="false"></type-list>
     </div>
-    <p class="sub-title">
-      <i class="icon-down"></i> 创建的歌单(
-      <span>5</span>)
-      <span class="fr">
-        <i class="icon-setting"></i>
-      </span>
-    </p>
-    <div class="song-list">
-      <img src="" alt="">
-      <div class="msg">
-        <p class="name">我喜欢的音乐</p>
-        <p class="count">10首</p>
-        <p class="border-1px"></p>
-        <span class="more">
-          <i class="icon-list-circle"></i>
-        </span>
-      </div>
-    </div>
+    <el-collapse v-model="activeNames">
+      <el-collapse-item title="  创建的歌单" name="1">
+        <div class="song-list" v-for="song in songList" :key="song.id">
+          <img :src="song.coverImgUrl" alt="封面图">
+          <div class="msg">
+            <p class="name">{{song.name}}</p>
+            <p class="count">共{{song.trackCount}}首</p>
+            <p class="border-1px"></p>
+            <span class="more">
+              <i class="icon-list-circle"></i>
+            </span>
+          </div>
+        </div>
+      </el-collapse-item>
+    </el-collapse>
   </div>
 </template>
 <script>
   import typeList from '../components/type-list.vue'
   import {
-    UserPlaylist
+    UserPlaylist,
+    UserSubcounth
   } from '../api/api.js'
   import store from '../store/index.js'
   export default {
-    name: 'Index',
+    name: 'my-music',
     data() {
       return {
-        uid: '',
-        isLogged: store.state.isLogged
+        activeNames: '1',
+        songList: [],
+        count:null
       }
     },
     components: {
       typeList
     },
-    created() {
+    mounted() {
       var params = {
-        uid: this.$uid
+        uid: this.$uid ? this.$uid : '471722851'
       }
       UserPlaylist(params)
         .then(res => {
           console.log(res)
-          // this.table.data = res.data
+          this.songList = res.playlist
+        }),
+        UserSubcounth(params)
+        .then(res => {
+          console.log(res)
+          this.count = res
         })
     },
+    watch: {},
     methods: {}
   }
 
@@ -61,18 +66,6 @@
 <style scoped lang="less">
   .type-list {
     background: #fff;
-  }
-
-  .sub-title {
-    padding-left: 0.2rem;
-    padding-right: 0.4rem;
-    height: 0.6rem;
-    line-height: 0.6rem;
-    position: relative;
-    font-size: 0.2rem;
-    i {
-      font-size: 0.3rem;
-    }
   }
 
   .song-list {

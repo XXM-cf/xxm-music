@@ -41,7 +41,6 @@ export default {
 @import '~common/base.less';
 .slider-list{
   font-size: 0.3rem;
-  padding:0 0.2rem;
   span{
     line-height: 0.8rem;
   }

@@ -29,7 +29,6 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/login': {
-        // target: 'http://192.168.16.102:3000/',
         target: 'http://localhost:3000/', // 公司
         changeOrigin: true,
         pathRewrite: {
@@ -37,19 +36,24 @@ module.exports = {
         }
       },
       '/user': {
-        // target: 'http://192.168.16.102:3000/',
-        target: 'http://192.168.16.214:3000/', // 公司
+        target: 'http://localhost:3000/', // 公司
         changeOrigin: true,
         pathRewrite: {
           '^/user': '/user'
         }
       },
       '/search': {
-        // target: 'http://192.168.16.102:3000/',
-        target: 'http://192.168.16.87:3000/', // 公司
+        target: 'http://localhost:3000/', // 公司
         changeOrigin: true,
         pathRewrite: {
           '^/search': '/search'
+        }
+      },
+      '/banner': {
+        target: 'http://localhost:3000/', // 公司
+        changeOrigin: true,
+        pathRewrite: {
+          '^/banner': '/banner'
         }
       }
     },

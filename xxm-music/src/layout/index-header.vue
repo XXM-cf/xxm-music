@@ -66,10 +66,6 @@
 </template>
 <script>
   import sliderList from '../components/slider-list.vue'
-  import {
-    loginCellphone
-  } from '../api/api.js'
-  import $ from 'jquery'
   export default {
     components: {
       sliderList
@@ -77,42 +73,23 @@
     data() {
       return {
         isLogged: false, // 是否登陆
-        isShowSlider: false,
-        userData: null,
-        table: {
-          data: [{
-            phone: ''
-          }],
-          send: {
-            phone: '13588745281',
-            password: '19950223asd'
-            // uid: '471722851'
-          }
-        }
+        userData: null // 用户的头像昵称等信息
       }
     },
     watch: {},
     created() {
-      this.userData = JSON.parse(window.sessionStorage.getItem('userData'))
+      this.userData = JSON.parse(window.sessionStorage.getItem('userData')) // 登陆之后从本地sessionStorage中取出登陆信息
     },
     mounted() {
       // this.getInfo()
     },
     methods: {
       logout() {
-        window.sessionStorage.removeItem('userData')
-        this.userData = null
+        window.sessionStorage.removeItem('userData') // 清除 session 
+        this.userData = null // 判断是否显示登陆按钮的条件是 是否存在ueserData  所以登出时候要赋值 null
       },
-
       showSliderBar() {
-        this.$refs.slider.classList.toggle('show-slider')
-      },
-      getInfo() {
-        loginCellphone(this.table.send)
-          .then(res => {
-            console.log(res)
-            // this.table.data = res.data
-          })
+        this.$refs.slider.classList.toggle('show-slider') // 显示测Bain菜单栏
       }
     }
   }

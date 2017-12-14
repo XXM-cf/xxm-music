@@ -1,3 +1,17 @@
 @import './gobal.less';
 @import './border-1px.less';
 @c: #d90400; // 基础色
+// 重置element-ui样式
+.el-tabs__nav{
+    margin-left: 0.5rem;
+}
+.el-tabs__item:hover,
+.el-tabs__item.is-active{
+    color: @c!important;
+}
+.el-tabs__active-bar{
+background-color: @c!important;
+}
+.el-tabs__header {
+    margin: 0 0 2px!important;
+}

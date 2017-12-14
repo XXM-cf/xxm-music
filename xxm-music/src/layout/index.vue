@@ -26,10 +26,12 @@ export default {
 }
 
 .main{
-  padding:1rem 0;
+  padding:1rem 0rem;
+  padding-bottom: 1.5rem;
   height: 100%;
   width: 100%;
   position: absolute;
+  overflow: auto;
   top:0;
   z-index: 1;
 }

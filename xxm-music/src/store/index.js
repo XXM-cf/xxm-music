@@ -13,7 +13,7 @@ export default new Vuex.Store({
       state.isLogged = true
       state.userMsg = msg
     },
-    UPDATE_LOADING(state, flag) {
+    UPDATE_LOADING(state, flag) { // loading
       state.isLoading = flag
     }
   }

@@ -34,8 +34,8 @@ git push -u origin master 推送代码到远程仓库
 ## 安装相关的依赖
 ```bash
 cnpm install
-cnpm install jquery --save
 cnpm install vuex --save
-cnpm install less less-loader --save
+cnpm install less less-loader
 cnpm install axios --save
+cnpm install element-ui --save
 ```
