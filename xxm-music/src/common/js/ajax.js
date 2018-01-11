@@ -52,7 +52,7 @@ axios.interceptors.response.use(function(response) { // 添加响应拦截器
 }, function(error) {
   console.log(error.msg)
   // 对响应错误做点什么
-  store.commit('UPDATE_LOADING', false)
+  store.commit('UPDATE_LOADING', false) // 请求失败之后 关闭loading
   return Promise.reject(error)
 })
 

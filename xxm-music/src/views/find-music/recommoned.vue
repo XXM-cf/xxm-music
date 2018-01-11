@@ -1,15 +1,16 @@
 <template>
   <div class="page" v-loading="$store.state.isLoading">
     <div class="banner">
-      <el-carousel height="2rem" indicator-position="none">
+      <el-carousel height="2.2rem" indicator-position="none">
         <el-carousel-item v-for="item in banner" :key="item.targetId">
           <img :src="item.pic" alt="" class="bannerimg">
         </el-carousel-item>
       </el-carousel>
     </div>
-    <div class="recommend-songlist">
-      <song-item :disc="disc" :bgUrl="url" :playnum="num"></song-item>
-      <song-item :disc="disc" :bgUrl="url" :playnum="num"></song-item>
+    <div class="container">
+      <p class="title">为你推荐
+        <i class="icon icon-right"></i>
+      </p>
       <song-item :disc="disc" :bgUrl="url" :playnum="num"></song-item>
       <song-item :disc="disc" :bgUrl="url" :playnum="num"></song-item>
       <song-item :disc="disc" :bgUrl="url" :playnum="num"></song-item>
@@ -53,19 +54,13 @@
     position: relative;
     height: 100%;
     .banner {
-      height: 2rem;
+      height: 2.2rem;
       margin-bottom: 0.2rem;
       position: relative;
       .bannerimg {
         width: 100%;
-        height: 2rem;
+        height: 2.2rem;
       }
-    }
-    .recommend-songlist {
-      position: relative;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
     }
   }
 

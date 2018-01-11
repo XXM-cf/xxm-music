@@ -22,10 +22,16 @@
         </div>
       </el-collapse-item>
     </el-collapse>
+    <div class="container">
+      <span class="title">为你推荐
+        <i class="icon icon-right"></i>
+      </span>
+    </div>
   </div>
 </template>
 <script>
   import typeList from '../components/type-list.vue'
+  import songItem from '../components/song-item.vue'
   import {
     UserPlaylist,
     UserSubcounth
@@ -37,11 +43,12 @@
       return {
         activeNames: '1',
         songList: [],
-        count:null
+        count: null
       }
     },
     components: {
-      typeList
+      typeList,
+      songItem
     },
     mounted() {
       var params = {
