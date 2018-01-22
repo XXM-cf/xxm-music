@@ -26,6 +26,9 @@
       <span class="title">为你推荐
         <i class="icon icon-right"></i>
       </span>
+      <span v-for="item in personalizedList" :key="item.id">
+        <song-item :disc="item.name" :bgUrl="item.picUrl" :playnum="item.playCount"></song-item>
+      </span>
     </div>
   </div>
 </template>
@@ -34,7 +37,8 @@
   import songItem from '../components/song-item.vue'
   import {
     UserPlaylist,
-    UserSubcounth
+    UserSubcounth,
+    personalized
   } from '../api/api.js'
   import store from '../store/index.js'
   export default {
@@ -43,6 +47,7 @@
       return {
         activeNames: '1',
         songList: [],
+        personalizedList: [], // 推荐歌单
         count: null
       }
     },
@@ -51,6 +56,11 @@
       songItem
     },
     mounted() {
+      personalized()
+        .then(res => {
+          this.personalizedList = res.result
+          console.log(this.personalizedList)
+        })
       var params = {
         uid: this.$uid ? this.$uid : '471722851'
       }

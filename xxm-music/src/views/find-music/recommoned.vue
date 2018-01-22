@@ -36,7 +36,7 @@
       }
     },
     mounted() {
-      Banner()
+      Banner({})
         .then(res => {
           this.banner = res.banners
         })

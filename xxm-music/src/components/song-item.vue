@@ -15,7 +15,7 @@
         default: ''
       },
       playnum: {
-        type: String,
+        type: Number,
         default: ''
       },
       disc: {

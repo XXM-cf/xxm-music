@@ -28,32 +28,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/login': {
+      '/api': {
         target: 'http://localhost:3000/',
         changeOrigin: true,
         pathRewrite: {
-          '^/login': '/login'
-        }
-      },
-      '/user': {
-        target: 'http://localhost:3000/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/user': '/user'
-        }
-      },
-      '/search': {
-        target: 'http://localhost:3000/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/search': '/search'
-        }
-      },
-      '/banner': {
-        target: 'http://localhost:3000/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/banner': '/banner'
+          '^/api': ''
         }
       }
     },
