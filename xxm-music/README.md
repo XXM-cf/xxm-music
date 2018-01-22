@@ -39,3 +39,5 @@ cnpm install less less-loader
 cnpm install axios --save
 cnpm install element-ui --save
 ```
+
+## 继续更新
